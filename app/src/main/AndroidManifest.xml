@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="no.thorbear.aztec"
+    android:installLocation="auto">
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name="androidx.multidex.MultiDexApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.AppCompat"
+        tools:ignore="AllowBackup">
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Optional: Add it to automatically download ML model to device after your app is installed.-->
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="barcode" />
+
+        <activity android:name="no.thorbear.aztec.ChooserActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="no.thorbear.aztec.LivePreviewActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name="no.thorbear.aztec.BarcodeResultActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity android:name=".preference.SettingsActivity" />
+
+    </application>
+
+</manifest>
